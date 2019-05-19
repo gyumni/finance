@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Symbol</th>
+                <th>Now Price</th>
+                <th>Price</th>
+                <th>SharesTOTAL</th>
+                <th>CostTOTAL</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td colspan="5"></td>
+                <td>$10,000.00</td>
+            </tr>
+        </tfoot>
+        <tbody>
+            {% for n in range(porLen) %}
+
+                <tr>
+                    <td>{{portf[n]["name"]}}</td>
+                    <td>{{portf[n]["symbol"]}}</td>
+                    <td>{{portf[n]["nowPrice"]}}</td>
+                    <td>{{portf[n]["price"]}}</td>
+                    <td>{{portf[n]["sharesTotal"]}}</td>
+                    <td>{{portf[n]["costmoneyTotal"]}}</td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td>CASH</td>
+                <td colspan="4"></td>
+                <td>{{endPrice}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <form action="/password" method="get">
+        <button type="submit" name="change password" >Change Password </button>
+    </form>
+{% endblock %}

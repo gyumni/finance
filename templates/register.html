@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    <form action="/register" id="quote" method="post">
+        <div class="form-group">
+            <input autocomplete="off" id="user" autofocus class="form-control" name="username" placeholder="Username" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="password" placeholder="Password" type="password">
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="confirmation" placeholder="Confirmation" type="password">
+        </div>
+        <button class="btn btn-primary" id="b" type="submit">Register</button>
+    </form>
+
+
+
+    <script>
+
+// https://stackoverflow.com/questions/22363838/submit-form-after-calling-e-preventdefault
+    var v=false;
+    $(document).ready(function() {
+
+        $("#quote").submit(function(event) {
+
+            $.getJSON("/check", {username: $("#user").val()}, function(data) {
+
+
+
+                if (data == false){
+
+
+                    alert(data);
+
+
+                }
+                else if($("#user").val().length<2)
+                {
+
+                    alert("Username is not available");
+
+
+                }
+                else
+                {
+                    v = true;
+
+                }
+
+
+
+
+
+            });
+
+
+
+            if (v)
+            {
+               this.submit()
+                return true;
+            }
+            else
+            {
+
+                event.preventDefault()
+            }
+
+        });
+
+    });
+
+    </script>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Price</th>
+                <th>Shares</th>
+                <th>Transacted</th>
+            </tr>
+        </thead>
+        <!--<tfoot>
+            <tr>
+                <td colspan="5"></td>
+                <td>$10,000.00</td>
+            </tr>
+        </tfoot>
+        -->
+        <tbody>
+            {% for n in range(bslen) %}
+
+                <tr>
+                    <td>{{bs[n]["symbol"]}}</td>
+                    <td>{{bs[n]["price"]}}</td>
+                    <td>{{bs[n]["shares"]}}</td>
+                    <td>{{bs[n]["date"]}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

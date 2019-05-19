@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>TOTAL</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td colspan="4"></td>
+                <td>$10,000.00</td>
+            </tr>
+        </tfoot>
+        <tbody>
+            {% for n in range(tlen) %}
+
+                <tr>
+                    <td>{{total[n]["symbol"]}}</td>
+                    <td>{{total[n]["name"]}}</td>
+                    <td>{{total[n]["sharesTotal"]}}</td>
+                    <td>{{total[n]["price"]}}</td>
+                    <td>{{total[n]["costmoneyTotal"]}}</td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td>CASH</td>
+                <td colspan="3"></td>
+                <td>{{cash}}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}
